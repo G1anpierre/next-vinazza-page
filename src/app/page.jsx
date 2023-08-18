@@ -86,6 +86,7 @@ export default async function Home() {
             hero: { title, subtitle, description },
             Features,
             testimonial: { text, name },
+            Services: ServicesData,
           },
         },
       },
@@ -123,7 +124,7 @@ export default async function Home() {
         {text}
       </Testimonial>
 
-      <Services />
+      <Services services={ServicesData} />
 
       <ContactSection />
     </>
