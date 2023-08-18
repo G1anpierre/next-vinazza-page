@@ -28,6 +28,17 @@ module.exports = {
           { fontVariationSettings: '"wdth" 125' },
         ],
       },
+      backgroundColor: (theme) => ({
+        ...theme('colors'),
+        primary: '#449e48',
+        secondary: '##FFFFFF',
+        tertiary: '#000000',
+      }),
+      textColor: {
+        primary: '#449e48',
+        secondary: '##FFFFFF',
+        tertiary: '#000000',
+      },
     },
   },
   plugins: [],

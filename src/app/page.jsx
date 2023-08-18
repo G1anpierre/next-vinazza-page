@@ -23,6 +23,7 @@ const query = gql`
           title
           hero {
             title
+            subtitle
             description
             image {
               data {
@@ -32,6 +33,19 @@ const query = gql`
                 }
               }
             }
+          }
+          Features {
+            title
+            description
+            featureCard {
+              Title
+              description
+              dateSubtitle
+            }
+          }
+          testimonial {
+            text
+            name
           }
         }
       }
@@ -52,7 +66,9 @@ export default async function Home() {
       homepage: {
         data: {
           attributes: {
-            hero: { title, description },
+            hero: { title, subtitle, description },
+            Features,
+            testimonial: { text, name },
           },
         },
       },
@@ -73,7 +89,7 @@ export default async function Home() {
           <h1 className="font-display text-5xl font-medium tracking-tight text-neutral-950 [text-wrap:balance] sm:text-7xl">
             {title}
             <br />
-            <span className="text-neutral-300">El Arte de Bailar</span>
+            <span className="text-neutral-300">{subtitle}</span>
           </h1>
           <p className="mt-6 text-xl text-neutral-600">{description}</p>
         </FadeIn>
@@ -81,15 +97,13 @@ export default async function Home() {
 
       <Clients />
 
-      <CaseStudies />
+      <CaseStudies features={Features} />
 
       <Testimonial
         className="mt-24 sm:mt-32 lg:mt-40"
-        client={{ name: 'Phobia', logo: logoPhobiaDark }}
+        client={{ name, logo: logoPhobiaDark }}
       >
-        The team at Studio went above and beyond with our onboarding, even
-        finding a way to access the user’s microphone without triggering one of
-        those annoying permission dialogs.
+        {text}
       </Testimonial>
 
       <Services />
