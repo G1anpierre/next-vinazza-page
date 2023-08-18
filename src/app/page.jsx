@@ -47,6 +47,23 @@ const query = gql`
             text
             name
           }
+          Services {
+            title
+            description
+            image {
+              data {
+                attributes {
+                  url
+                  formats
+                }
+              }
+            }
+            ServiceCard {
+              id
+              title
+              description
+            }
+          }
         }
       }
     }
@@ -59,7 +76,7 @@ export const metadata = {
 }
 
 export default async function Home() {
-  let caseStudies = (await loadMDXMetadata('work')).slice(0, 3)
+  // let caseStudies = (await loadMDXMetadata('work')).slice(0, 3)
   const client = getClient()
   const {
     data: {

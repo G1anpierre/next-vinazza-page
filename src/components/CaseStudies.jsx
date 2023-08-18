@@ -9,9 +9,7 @@ import React from 'react'
 
 export const CaseStudies = async ({ features }) => {
   const { title, description, featureCard: featureCards } = features
-  let caseStudies = (await loadMDXMetadata('work')).slice(0, 3)
-
-  console.log('featureCards', featureCards)
+  // let caseStudies = (await loadMDXMetadata('work')).slice(0, 3)
 
   return (
     <>
