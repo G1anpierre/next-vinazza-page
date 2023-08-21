@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import clsx from 'clsx'
@@ -20,6 +21,7 @@ import { GridPattern } from '@/components/GridPattern'
 import { Logo, Logomark } from '@/components/Logo'
 import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
+import LogoVinazza from '@/images/clients/vinazza/vinazza-removebg.png'
 
 const RootLayoutContext = createContext({})
 
@@ -59,16 +61,9 @@ function Header({
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
-          <Logomark
-            className="h-8 sm:hidden"
-            invert={invert}
-            filled={logoHovered}
-          />
-          <Logo
-            className="hidden h-8 sm:block"
-            invert={invert}
-            filled={logoHovered}
-          />
+          <div className="flex h-10 w-20 content-center justify-center overflow-hidden md:h-20 md:w-48">
+            <Image src={LogoVinazza} alt="logo vinazza" unoptimized />
+          </div>
         </Link>
         <div className="flex items-center gap-x-8">
           <Button href="/contact" invert={invert}>
