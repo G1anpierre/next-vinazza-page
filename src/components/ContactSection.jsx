@@ -4,6 +4,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { Offices } from '@/components/Offices'
 
 export function ContactSection({ contactCard }) {
+  if (!contactCard) return
   const {
     title,
     subtitle,
