@@ -17,23 +17,16 @@ function Office({ name, children, invert = false }) {
   )
 }
 
-export function Offices({ invert = false, ...props }) {
+export function Offices({ invert = false, sede = [], ...props }) {
   return (
     <ul role="list" {...props}>
-      <li>
-        <Office name="Milan" invert={invert}>
-          1 Carlsberg Gate
-          <br />
-          1260, København, Denmark
-        </Office>
-      </li>
-      <li>
-        <Office name="Torino" invert={invert}>
-          24 Lego Allé
-          <br />
-          7190, Billund, Denmark
-        </Office>
-      </li>
+      {sede.map((oneSede) => (
+        <li key={oneSede.title}>
+          <Office name={oneSede.title} invert={invert}>
+            {oneSede.description}
+          </Office>
+        </li>
+      ))}
     </ul>
   )
 }

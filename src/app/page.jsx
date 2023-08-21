@@ -64,6 +64,19 @@ const query = gql`
               description
             }
           }
+          contactCard {
+            title
+            subtitle
+            sede {
+              title
+            }
+            button {
+              link {
+                label
+                href
+              }
+            }
+          }
         }
       }
     }
@@ -87,6 +100,7 @@ export default async function Home() {
             Features,
             testimonial: { text, name },
             Services: ServicesData,
+            contactCard,
           },
         },
       },
@@ -126,7 +140,7 @@ export default async function Home() {
 
       <Services services={ServicesData} />
 
-      <ContactSection />
+      <ContactSection contactCard={contactCard} />
     </>
   )
 }

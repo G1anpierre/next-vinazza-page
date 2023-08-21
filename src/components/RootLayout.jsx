@@ -18,10 +18,9 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Footer } from '@/components/Footer'
 import { GridPattern } from '@/components/GridPattern'
-import { Logo, Logomark } from '@/components/Logo'
+import { LogoVinazza } from '@/components/Logo'
 import { Offices } from '@/components/Offices'
 import { SocialMedia } from '@/components/SocialMedia'
-import LogoVinazza from '@/images/clients/vinazza/vinazza-removebg.png'
 
 const RootLayoutContext = createContext({})
 
@@ -61,9 +60,7 @@ function Header({
           onMouseEnter={() => setLogoHovered(true)}
           onMouseLeave={() => setLogoHovered(false)}
         >
-          <div className="flex h-10 w-20 content-center justify-center overflow-hidden md:h-20 md:w-48">
-            <Image src={LogoVinazza} alt="logo vinazza" unoptimized />
-          </div>
+          <LogoVinazza />
         </Link>
         <div className="flex items-center gap-x-8">
           <Button href="/contact" invert={invert}>
