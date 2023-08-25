@@ -2,17 +2,26 @@ import { Button } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { Offices } from '@/components/Offices'
+import { useStore } from '@/store/zustand'
 
-export function ContactSection({ contactCard }) {
-  if (!contactCard) return
+export function ContactSection() {
   const {
-    title,
-    subtitle,
-    button: {
-      link: { label, href },
+    homepage: {
+      data: {
+        attributes: {
+          contactCard: {
+            title,
+            subtitle,
+            button: {
+              link: { label, href },
+            },
+            sede,
+          },
+        },
+      },
     },
-    sede,
-  } = contactCard
+  } = useStore.getState()
+
   return (
     <Container className="mt-24 sm:mt-32 lg:mt-40">
       <FadeIn className="-mx-6 rounded-4xl bg-primary px-6 py-20 sm:mx-0 sm:py-32 md:px-12">

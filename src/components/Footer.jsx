@@ -5,40 +5,51 @@ import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { Logo } from '@/components/Logo'
 import { socialMediaProfiles } from '@/components/SocialMedia'
+import { useStore } from '@/store/zustand'
 
-const navigation = [
-  {
-    title: 'Work',
-    links: [
-      { title: 'FamilyFund', href: '/work/family-fund' },
-      { title: 'Unseal', href: '/work/unseal' },
-      { title: 'Phobia', href: '/work/phobia' },
-      {
-        title: (
-          <>
-            See all <span aria-hidden="true">&rarr;</span>
-          </>
-        ),
-        href: '/work',
-      },
-    ],
-  },
-  {
-    title: 'Company',
-    links: [
-      { title: 'About', href: '/about' },
-      { title: 'Process', href: '/process' },
-      { title: 'Blog', href: '/blog' },
-      { title: 'Contact us', href: '/contact' },
-    ],
-  },
-  {
-    title: 'Connect',
-    links: socialMediaProfiles,
-  },
-]
+// const navigation = [
+//   {
+//     title: 'Work',
+//     links: [
+//       { title: 'FamilyFund', href: '/work/family-fund' },
+//       { title: 'Unseal', href: '/work/unseal' },
+//       { title: 'Phobia', href: '/work/phobia' },
+//       {
+//         title: (
+//           <>
+//             See all <span aria-hidden="true">&rarr;</span>
+//           </>
+//         ),
+//         href: '/work',
+//       },
+//     ],
+//   },
+//   {
+//     title: 'Company',
+//     links: [
+//       { title: 'About', href: '/about' },
+//       { title: 'Process', href: '/process' },
+//       { title: 'Blog', href: '/blog' },
+//       { title: 'Contact us', href: '/contact' },
+//     ],
+//   },
+//   {
+//     title: 'Connect',
+//     links: socialMediaProfiles,
+//   },
+// ]
 
 function Navigation() {
+  const {
+    homepage: {
+      data: {
+        attributes: {
+          footer: { sections: navigation },
+        },
+      },
+    },
+  } = useStore.getState()
+
   return (
     <nav>
       <ul role="list" className="grid grid-cols-2 gap-8 sm:grid-cols-3">
@@ -48,13 +59,13 @@ function Navigation() {
               {section.title}
             </div>
             <ul role="list" className="mt-4 text-sm text-neutral-700">
-              {section.links.map((link) => (
-                <li key={link.title} className="mt-4">
+              {section.section.map((link) => (
+                <li key={link.label} className="mt-4">
                   <Link
-                    href={link.href}
+                    href={link.href ?? '/'}
                     className="transition hover:text-neutral-950"
                   >
-                    {link.title}
+                    {link.label}
                   </Link>
                 </li>
               ))}
@@ -80,15 +91,24 @@ function ArrowIcon(props) {
 }
 
 function NewsletterForm() {
+  const {
+    homepage: {
+      data: {
+        attributes: {
+          footer: {
+            newsletter: { title, text },
+          },
+        },
+      },
+    },
+  } = useStore.getState()
+
   return (
     <form className="max-w-sm">
       <h2 className="font-display text-sm font-semibold tracking-wider text-neutral-950">
-        Sign up for our newsletter
+        {title}
       </h2>
-      <p className="mt-4 text-sm text-neutral-700">
-        Subscribe to get the latest design news, articles, resources and
-        inspiration.
-      </p>
+      <p className="mt-4 text-sm text-neutral-700">{text}</p>
       <div className="relative mt-6">
         <input
           type="email"

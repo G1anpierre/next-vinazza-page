@@ -1,11 +1,22 @@
 import Image from 'next/image'
 import clsx from 'clsx'
-
 import { Container } from '@/components/Container'
 import { FadeIn } from '@/components/FadeIn'
 import { GridPattern } from '@/components/GridPattern'
+import { useStore } from '@/store/zustand'
+import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
 
-export function Testimonial({ children, client, className }) {
+export function Testimonial({ className }) {
+  const {
+    homepage: {
+      data: {
+        attributes: {
+          testimonial: { text, name },
+        },
+      },
+    },
+  } = useStore.getState()
+
   return (
     <div
       className={clsx(
@@ -22,11 +33,11 @@ export function Testimonial({ children, client, className }) {
           <figure className="mx-auto max-w-4xl">
             <blockquote className="relative font-display text-3xl font-medium tracking-tight text-neutral-950 sm:text-4xl">
               <p className="before:content-['“'] after:content-['”'] sm:before:absolute sm:before:right-full">
-                {children}
+                {text}
               </p>
             </blockquote>
             <figcaption className="mt-10">
-              <Image src={client.logo} alt={client.name} unoptimized />
+              <Image src={logoPhobiaDark} alt={name} unoptimized />
             </figcaption>
           </figure>
         </FadeIn>

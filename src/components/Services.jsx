@@ -5,18 +5,27 @@ import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { StylizedImage } from '@/components/StylizedImage'
 import { List, ListItem } from '@/components/List'
 import imageLaptop from '@/images/laptop.jpg'
+import { useStore } from '@/store/zustand'
 
-export const Services = ({ services }) => {
+export const Services = () => {
   const {
-    title,
-    description,
-    image: {
+    homepage: {
       data: {
-        attributes: { url },
+        attributes: {
+          Services: {
+            title,
+            description,
+            image: {
+              data: {
+                attributes: { url },
+              },
+            },
+            ServiceCard,
+          },
+        },
       },
     },
-    ServiceCard,
-  } = services
+  } = useStore.getState()
 
   return (
     <>

@@ -4,12 +4,18 @@ import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useStore } from '@/store/zustand'
 
-import React from 'react'
-
-export const CaseStudies = async ({ features }) => {
-  const { title, description, featureCard: featureCards } = features
-  // let caseStudies = (await loadMDXMetadata('work')).slice(0, 3)
+export const CaseStudies = async () => {
+  const {
+    homepage: {
+      data: {
+        attributes: {
+          Features: { title, description, featureCard: featureCards },
+        },
+      },
+    },
+  } = useStore.getState()
 
   return (
     <>
