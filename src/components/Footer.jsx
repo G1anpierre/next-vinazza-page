@@ -7,6 +7,7 @@ import { Logo } from '@/components/Logo'
 import { socialMediaProfiles } from '@/components/SocialMedia'
 import { useStore } from '@/store/zustand'
 
+// * temporary comment to delete later
 // const navigation = [
 //   {
 //     title: 'Work',
