@@ -139,8 +139,6 @@ export function RootLayoutInner({ children }) {
 
   const { homepage } = useStore.getState()
 
-  console.log('homepage RootLayoutInner:', homepage)
-
   useEffect(() => {
     function onClick(event) {
       if (event.target.closest('a')?.href === window.location.href) {
