@@ -2,6 +2,7 @@ import React from 'react'
 import { Container } from '@/components/Container'
 import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import { useStore } from '@/store/zustand'
+import Markdown from 'react-markdown'
 
 export const Hero = () => {
   const {
@@ -22,7 +23,9 @@ export const Hero = () => {
           <br />
           <span className="text-neutral-300">{subtitle}</span>
         </h1>
-        <p className="mt-6 text-xl text-neutral-600">{description}</p>
+        <p className="mt-6 text-xl text-neutral-600">
+          <Markdown>{description}</Markdown>
+        </p>
       </FadeIn>
     </Container>
   )

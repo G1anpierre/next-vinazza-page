@@ -6,6 +6,7 @@ import { StylizedImage } from '@/components/StylizedImage'
 import { List, ListItem } from '@/components/List'
 import imageLaptop from '@/images/laptop.jpg'
 import { useStore } from '@/store/zustand'
+import Markdown from 'react-markdown'
 
 export const Services = () => {
   const {
@@ -34,7 +35,9 @@ export const Services = () => {
         title={title}
         className="mt-24 sm:mt-32 lg:mt-40"
       >
-        <p>{description}</p>
+        <p>
+          <Markdown>{description}</Markdown>
+        </p>
       </SectionIntro>
       <Container className="mt-16">
         <div className="lg:flex lg:items-center lg:justify-end">
@@ -50,7 +53,7 @@ export const Services = () => {
           <List className="mt-16 lg:mt-0 lg:w-1/2 lg:min-w-[33rem] lg:pl-4">
             {ServiceCard.map((service) => (
               <ListItem key={service.id} title={service.title}>
-                {service.description}
+                <Markdown>{service.description}</Markdown>
               </ListItem>
             ))}
           </List>

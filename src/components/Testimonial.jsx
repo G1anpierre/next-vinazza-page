@@ -5,6 +5,7 @@ import { FadeIn } from '@/components/FadeIn'
 import { GridPattern } from '@/components/GridPattern'
 import { useStore } from '@/store/zustand'
 import logoPhobiaDark from '@/images/clients/phobia/logo-dark.svg'
+import Markdown from 'react-markdown'
 
 export function Testimonial({ className }) {
   const {
@@ -33,7 +34,7 @@ export function Testimonial({ className }) {
           <figure className="mx-auto max-w-4xl">
             <blockquote className="relative font-display text-3xl font-medium tracking-tight text-neutral-950 sm:text-4xl">
               <p className="before:content-['“'] after:content-['”'] sm:before:absolute sm:before:right-full">
-                {text}
+                <Markdown>{text}</Markdown>
               </p>
             </blockquote>
             <figcaption className="mt-10">

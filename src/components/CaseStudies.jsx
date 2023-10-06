@@ -5,6 +5,7 @@ import { FadeIn, FadeInStagger } from '@/components/FadeIn'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useStore } from '@/store/zustand'
+import Markdown from 'react-markdown'
 
 export const CaseStudies = async () => {
   const {
@@ -20,7 +21,9 @@ export const CaseStudies = async () => {
   return (
     <>
       <SectionIntro title={title} className="mt-24 sm:mt-32 lg:mt-40">
-        <p>{description}</p>
+        <p>
+          <Markdown>{description}</Markdown>
+        </p>
       </SectionIntro>
       <Container className="mt-16">
         <FadeInStagger className="grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -54,7 +57,7 @@ export const CaseStudies = async () => {
                   {caseStudy.Title}
                 </p>
                 <p className="mt-4 text-base text-neutral-600">
-                  {caseStudy.description}
+                  <Markdown>{caseStudy.description}</Markdown>
                 </p>
               </article>
             </FadeIn>
